@@ -43,7 +43,8 @@ public class PersonService {
         Person person = new Person(
                 request.getFirstName(),
                 request.getLastName(),
-                request.getEmail()
+                request.getEmail(),
+                request.getPhoneNumber()
         );
 
         Person savedPerson = personRepository.save(person);
@@ -89,7 +90,8 @@ public class PersonService {
                 person.getId(),
                 person.getFirstName(),
                 person.getLastName(),
-                person.getEmail()
+                person.getEmail(),
+                person.getPhoneNumber()
         );
     }
 }

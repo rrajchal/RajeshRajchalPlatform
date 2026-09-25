@@ -15,6 +15,9 @@ public class PersonRequest {
     @Email(message = "Email must be valid.")
     private String email;
 
+    @NotBlank(message = "Phone number is required")
+    private String phoneNumber;
+
     public PersonRequest() {
     }
 
@@ -36,6 +39,10 @@ public class PersonRequest {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setEmail(String email) {

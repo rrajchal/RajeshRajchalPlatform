@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/people")
 public class PersonController {
 
     private final PersonService personService;
@@ -17,23 +18,24 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping("/api/people")
+    @GetMapping
     public List<PersonResponse> getAllPeople() {
         return personService.getAllPeople();
     }
 
-    @GetMapping("/api/people/{id}")
+    @GetMapping("/{id}")
     public PersonResponse getPersonById(@PathVariable Long id) {
         return personService.getPersonById(id);
     }
 
-    @PostMapping("/api/people")
-    public PersonResponse createPerson(@Valid @RequestBody PersonRequest request) {
+    @PostMapping("/add")
+    public PersonResponse addPerson(
+            @Valid @RequestBody PersonRequest request) {
 
         return personService.savePerson(request);
     }
 
-    @PutMapping("/api/people/{id}")
+    @PutMapping("/update/{id}")
     public PersonResponse updatePerson(
             @PathVariable Long id,
             @Valid @RequestBody PersonRequest request) {
@@ -41,7 +43,7 @@ public class PersonController {
         return personService.updatePerson(id, request);
     }
 
-    @DeleteMapping("/api/people/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deletePerson(@PathVariable Long id) {
         personService.deletePerson(id);
     }
